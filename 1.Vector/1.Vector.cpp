@@ -145,6 +145,33 @@ void FloatingPointError()
 	cout << "Equals: " << Equals(LU, LU2) << endl;
 }
 
+class A
+{
+public:
+	A() = default;
+
+	void foo(FXMVECTOR _v)
+	{
+		XMStoreFloat3(&v1, _v);
+		show(v1);
+	}
+
+private:
+	void show(XMFLOAT3 v)
+	{
+		cout << "v1:(" << v.x << "," << v.y << "," << v.z << ")\n";
+	}
+
+	XMFLOAT3 v1;
+	XMFLOAT3 v2;
+};
+
+void ClassMember()
+{
+	A a;
+	a.foo(XMVectorSet(1.0f, 2.0f, 3.0f, 4.0f));
+}
+
 int main()
 {
 	cout.setf(ios_base::boolalpha);
@@ -158,7 +185,8 @@ int main()
 	//SetterFunctions();
 	//VectorFunctions();
 	//FloatingPointError();
-	FunctionArguments();
+	//FunctionArguments();
+	ClassMember();
 
 	return 0;
 }
