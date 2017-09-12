@@ -92,6 +92,34 @@ void VectorFunctions()
 	cout << "angle              : " << angleDegree << endl;
 }
 
+void XM_CALLCONV FunctionArguments(FXMVECTOR v1, float f, FXMVECTOR v2, FXMVECTOR v3, GXMVECTOR v4,
+								   HXMVECTOR v5, HXMVECTOR v6, CXMVECTOR v7, CXMVECTOR v8)
+{
+	cout << "v1 =" << v1 << endl;
+	cout << "f ="  << f  << endl;
+	cout << "v2 =" << v2 << endl;
+	cout << "v3 =" << v3 << endl;
+	cout << "v4 =" << v4 << endl;
+	cout << "v5 =" << v5 << endl;
+	cout << "v6 =" << v6 << endl;
+	cout << "v7 =" << v7 << endl;
+	cout << "v8 =" << v8 << endl;
+}
+
+void FunctionArguments()
+{
+	XMVECTOR v1 = XMVectorSet(1.0f, 1.0f, 1.0f, 0.0f);
+	XMVECTOR v2 = XMVectorSet(2.0f, 2.0f, 2.0f, 0.0f);
+	XMVECTOR v3 = XMVectorSet(3.0f, 3.0f, 3.0f, 0.0f);
+	XMVECTOR v4 = XMVectorSet(4.0f, 4.0f, 4.0f, 0.0f);
+	XMVECTOR v5 = XMVectorSet(5.0f, 5.0f, 5.0f, 0.0f);
+	XMVECTOR v6 = XMVectorSet(6.0f, 6.0f, 6.0f, 0.0f);
+	XMVECTOR v7 = XMVectorSet(7.0f, 7.0f, 7.0f, 0.0f);
+	XMVECTOR v8 = XMVectorSet(8.0f, 8.0f, 8.0f, 0.0f);
+
+	FunctionArguments(v1, 10.0f, v2, v3, v4, v5, v6, v7, v8);
+}
+
 void FloatingPointError()
 {
 	cout.precision(8);
@@ -129,7 +157,8 @@ int main()
 
 	//SetterFunctions();
 	//VectorFunctions();
-	FloatingPointError();
+	//FloatingPointError();
+	FunctionArguments();
 
 	return 0;
 }
