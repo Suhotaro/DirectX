@@ -31,6 +31,33 @@ ostream& XM_CALLCONV operator << (ostream& os, FXMMATRIX m)
 	return os;
 }
 
+XMMATRIX XM_CALLCONV foo(FXMMATRIX m1, CXMMATRIX m2, CXMMATRIX m3)
+{
+	XMMATRIX m;
+	m = m1 * m2;
+	m = m * m3;
+
+	//$todo: return matrix as argument out parameter
+
+	return m;
+}
+
+class AAA
+{
+public:
+	AAA(CXMMATRIX _ma)
+	{
+		XMStoreFloat4x4(&m, _ma);
+	}
+
+	void Show()
+	{
+		printf("%f %f\n", m._11, m._44);
+	}
+
+	XMFLOAT4X4 m;
+};
+
 int main()
 {
 	if(!XMVerifyCPUSupport())
@@ -52,6 +79,8 @@ int main()
 
 	XMMATRIX F = A*E;
 
+	XMMATRIX G = foo(A, E, D);
+
 	cout << "A = "					 << endl << A   << endl;
 	cout << "B = "					 << endl << B   << endl;
 	cout << "C = A*B"				 << endl << C   << endl;
@@ -59,6 +88,10 @@ int main()
 	cout << "det = determinant(A) =" << endl << det << endl;
 	cout << "E = inverse(A) ="		 << endl << E   << endl;
 	cout << "F = A*E ="				 << endl << F   << endl;
+	cout << "G = A*E*D ="			 << endl << G   << endl;
+
+	AAA aaa(A);
+	aaa.Show();
 
 	return 0;
 }
