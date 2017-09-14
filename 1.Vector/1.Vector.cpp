@@ -172,6 +172,16 @@ void ClassMember()
 	a.foo(XMVectorSet(1.0f, 2.0f, 3.0f, 4.0f));
 }
 
+static const XMVECTORF32 g_Vector = { 1.0f, 2.0f, 3.0f, 0.0f };
+
+void ConstInitializationSyntax()
+{
+	cout << "Global: " << g_Vector << endl;
+
+	XMVECTORF32 Vector = { 4.0f, 5.0f, 6.0f, 0.0f };
+	cout << "Global: " << Vector << endl;
+}
+
 int main()
 {
 	cout.setf(ios_base::boolalpha);
@@ -186,7 +196,8 @@ int main()
 	//VectorFunctions();
 	//FloatingPointError();
 	//FunctionArguments();
-	ClassMember();
+	//ClassMember();
+	ConstInitializationSyntax();
 
 	return 0;
 }
